@@ -1,0 +1,13 @@
+stages:
+  - despliegue
+
+deploy:
+  stage: despliegue
+  image: python:3.6
+  script:
+    - echo "Installing aws command line"
+    - pip install awscli
+    - aws --version
+    - echo "Extracting the production build"
+    - echo "Uploading files to AWS Bucket"
+    - aws s3 cp --recursive . s3://testinggpipelinetoaws
